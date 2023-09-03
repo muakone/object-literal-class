@@ -1,6 +1,6 @@
+// Cart Simulator
+
 // Object literal pattern
-
-
 const prompt = require("prompt-sync")({ sigint: true });
 
 // Constructor class
@@ -15,7 +15,7 @@ class Cart {
       this.cartArray.splice(this.cartArray.indexOf(product), 1);
       console.log(`${product} has been removed from the cart.`);
     };
-    this.Contd = function () {
+    this.standBy = function () {
       let command;
       do {
         console.log(
@@ -32,9 +32,13 @@ class Cart {
             this.removeFromCart(productMinus);
             break;
           case "show-items":
-            console.log(
-              "The items in the cart are: " + this.cartArray.join(", ")
-            );
+            if(this.cartArray.length == 0) {
+                console.log("The Cart is empty, add items to the cart")
+            } else {
+                console.log(
+                    "The items in the cart are: " + this.cartArray.join(", ")
+                  );
+            }
             break;
           case "length":
             console.log(
@@ -56,4 +60,4 @@ class Cart {
 const myCart = new Cart();
 
 // Call the Contd method
-myCart.Contd();
+myCart.standBy();
